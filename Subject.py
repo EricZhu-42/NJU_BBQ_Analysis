@@ -1,12 +1,18 @@
-import os
-import numpy as np
+"""Module to preprocess text (e.g. tokenize).
+
+Developed by EricZhu-42 in June, 2019.
+"""
+
+import datetime
 import json
-import pandas as pd
+import os
+import pickle
+import time
+
 import jieba
 import jieba.analyse
-import pickle
-
-import time, datetime
+import numpy as np
+import pandas as pd
 
 local_path = os.path.split(__file__)[0]
 jieba.load_userdict(os.path.join(local_path,r"data\dict.txt"))

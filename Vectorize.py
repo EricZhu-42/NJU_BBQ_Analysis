@@ -1,10 +1,13 @@
-from sklearn.feature_extraction.text import TfidfVectorizer
-import numpy as np
-import pickle
+"""Module to vectorize text and save vectorizer.
+
+Developed by EricZhu-42 in June, 2019.
+"""
 
 import os
+import pickle
 
-
+import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 local_path = os.path.split(__file__)[0]
 feature_path = os.path.join(local_path,r'models\TfifVectorizer.pkl')
@@ -42,24 +45,3 @@ if __name__ == "__main__":
     save_model(sep_sentences_path)
 
 
-"""
-max_similarity = 0
-max_index = 0
-
-input_str = "电话 心情 抱怨 印象 厉害 大一"
-input_vec = vectorizer.transform([input_str]).toarray()[0].T
-
-
-for index in range(0,len(sep_sentences)):
-    dense_vec = X[index].todense()
-    dot_value = np.dot(dense_vec,input_vec)
-    if dot_value>max_similarity:
-        max_index = index
-        max_similarity = dot_value
-
-print(sep_sentences[max_index])
-
-#test = ['一点 信息']
-#print(vectorizer.transform(test).toarray())
-#print(vectorizer.get_feature_names())
-"""

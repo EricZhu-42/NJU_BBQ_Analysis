@@ -1,8 +1,15 @@
-import numpy as np
+"""Module to predict comments of given information.
+
+Developed by EricZhu-42 in June, 2019.
+"""
+
 import os
-from Vectorize import load_vectorizer, load_sentences
-from Subject import load_commented_df, tokenize
 from pprint import pprint
+
+import numpy as np
+
+from Subject import load_commented_df, tokenize
+from Vectorize import load_sentences, load_vectorizer
 
 local_path = os.path.split(__file__)[0]
 feature_path = os.path.join(local_path,r'models\TfifVectorizer.pkl')
@@ -31,9 +38,7 @@ def predict(input_str:str):
     return df.iloc[max_index]
 
 if __name__ == "__main__":
-    #s = "都过去好久了 还是会偶尔想起你" --- "一厢情愿是没有好结果的→_→"
-    #s = "大家一般都怎么和室友说晚上别人睡觉以后敲键盘和鼠标声音太大呢，耳塞没有用，直接说吗？还是委婉暗示，真的被这个声音烦的不行。。。" --- '直接客气一点说啊，一般正常舍友都会理解你的[em]e249[/em]' '睡得跟死猪一样的我可能无法感受到'
-    #s = "墙墙 最近校园网是出什么问题了吗 在宿舍装的wifi连校园网就一直卡在登录界面进不去 大家也有这个问题吗" --- '挺正常的。。' '换备用线路_(´ཀ`」 ∠)_' '换线路。我试过' '就今天不行...' '网页都打不开[em]e400824[/em]' '昨天也打不开'
+    s = "大家一般都怎么和室友说晚上别人睡觉以后敲键盘和鼠标声音太大呢，耳塞没有用，直接说吗？还是委婉暗示，真的被这个声音烦的不行。。。"
     df = predict(s)
     for item in df['commentlist']:
         pprint(item['content'])
